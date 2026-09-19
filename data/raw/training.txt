@@ -1,0 +1,244 @@
+Veyra is an artificial intelligence project built from scratch.
+
+Veyra is designed to become an independent AI system.
+The Veyra model is software that learns patterns from text.
+A language model receives tokens and predicts what token should come next.
+Training changes neural network weights so that predictions become more accurate.
+
+Veyra is made from several important parts.
+The tokenizer converts text into tokens.
+Tokens are represented as numbers.
+The transformer processes those numbers.
+Attention allows the model to examine relationships between tokens.
+The neural network uses learned weights to make predictions.
+
+A model does not understand language in exactly the same way that a human does.
+During training, the model observes many examples.
+It learns statistical patterns and relationships.
+The training objective is to predict the next token.
+Repeated training allows the weights to adapt.
+
+The Veyra brain will eventually coordinate context, memory, reasoning, retrieval and tools.
+The model is one part of the larger Veyra system.
+The brain will decide how information should be processed.
+Memory will allow useful information to persist.
+Context will determine which information is relevant to the current task.
+Reasoning systems will help break complicated tasks into smaller steps.
+Tools will allow the system to interact with external software.
+
+Veyra should be able to process questions.
+Veyra should be able to explain ideas.
+Veyra should be able to summarize information.
+Veyra should be able to write structured responses.
+Veyra should be able to analyze information.
+Veyra should eventually be able to write and understand code.
+
+A transformer contains multiple layers.
+Each layer contains attention and feed forward computation.
+Layer normalization helps stabilize the network.
+Residual connections allow information to move through the network.
+The attention mechanism creates relationships between positions in a sequence.
+
+Causal attention prevents a language model from seeing future tokens while predicting the current token.
+This allows training to simulate the generation process.
+When the model predicts the next token, only previous information should be available.
+This property is important for autoregressive language models.
+
+The tokenizer is responsible for converting text into a representation the neural network can process.
+A tokenizer has a vocabulary.
+Every vocabulary item has an identifier.
+The identifiers are passed into embedding layers.
+Embeddings convert token identifiers into numerical vectors.
+
+Positional information tells the transformer where tokens occur in a sequence.
+Without positional information, the model would have difficulty distinguishing different positions.
+Token embeddings represent the content of tokens.
+Position embeddings represent their locations.
+Together they create the initial representation used by the transformer.
+
+Attention uses queries, keys and values.
+Queries represent what a position is looking for.
+Keys represent information that can be matched.
+Values contain information that can be passed forward.
+Attention scores determine how strongly positions interact.
+
+The feed forward network transforms the representation after attention.
+Nonlinear activation allows the network to represent more complex relationships.
+Multiple transformer blocks allow the model to build increasingly useful representations.
+
+The language model head converts the final hidden representation into vocabulary logits.
+The logits represent the model's prediction for every possible next token.
+A probability distribution can be calculated from the logits.
+The highest probability token can be selected.
+Sampling can also be used to produce varied text.
+
+Training uses a loss function.
+The loss measures how different the model prediction is from the correct next token.
+A lower loss generally means the model is becoming better at the training objective.
+The optimizer changes the model weights using gradients.
+Backpropagation calculates how each parameter contributed to the error.
+
+A training dataset should contain useful and varied examples.
+More data can provide more language patterns.
+Higher quality data can provide better learning signals.
+A dataset should be processed consistently.
+Training and validation data should be separated.
+
+Validation data is not used to update model weights.
+It is used to measure how well the model performs on data it did not directly train on.
+Training loss measures performance on training examples.
+Validation loss provides another measurement of model behavior.
+Perplexity is a common metric for language models.
+
+Checkpoints allow training to be saved.
+A checkpoint can contain model weights.
+It can also contain optimizer state and training information.
+Saving checkpoints allows training to resume later.
+The best checkpoint can be selected using validation loss.
+
+Veyra will need a larger dataset before it can become a useful language model.
+The current small dataset is only an engineering test.
+It proves that the tokenizer, transformer, optimizer and checkpoint system can work together.
+It does not provide enough knowledge to make Veyra intelligent.
+
+A larger Veyra dataset should contain many different subjects.
+It should contain explanations, questions, answers, conversations, facts, reasoning examples and code examples.
+The dataset should be cleaned before training.
+Duplicate examples should be detected.
+Broken or unwanted text should be removed.
+
+Veyra should learn that a question and an answer have different roles.
+A user message can provide a task.
+An assistant message can provide a response.
+A system instruction can describe behavior.
+These roles will become important when Veyra learns conversational behavior.
+
+For example, a user may ask what a computer is.
+A useful response should explain that a computer is an electronic machine that processes information.
+A user may ask what software is.
+Software is a collection of instructions that tells a computer what to do.
+A user may ask what a neural network is.
+A neural network is a mathematical model made from connected computational units whose parameters can be learned from data.
+
+Reasoning requires more than memorizing individual sentences.
+A model can learn relationships between concepts.
+For example, if all birds in a small example are animals, then a bird can be described as an animal.
+Learning relationships is one part of developing useful language behavior.
+
+Programming languages are another important area for Veyra.
+Code consists of structured instructions.
+Python is a programming language.
+JavaScript is a programming language commonly used for web applications.
+HTML describes the structure of web documents.
+CSS controls presentation and layout.
+A program can contain variables, functions, conditions and loops.
+
+A variable stores a value.
+A function groups reusable behavior.
+A condition allows software to choose between different paths.
+A loop repeats an operation.
+Objects can group related data and behavior.
+
+Veyra should eventually be able to understand these concepts.
+It should also learn that code must follow the syntax of its programming language.
+A correct program must have valid structure.
+A useful coding assistant should explain errors instead of inventing information.
+
+Artificial intelligence systems need evaluation.
+A model should be tested on examples that were not used during training.
+Evaluation can measure language modeling performance.
+Additional tests can measure instruction following, factual behavior, reasoning and coding.
+
+Veyra should not treat every generated answer as automatically correct.
+A future verification system can inspect generated information.
+A tool system can provide calculations or retrieve information when appropriate.
+A retrieval system can supply relevant documents.
+The brain can decide when those systems are useful.
+
+Memory is another part of the future Veyra architecture.
+Short term memory can contain information from the current conversation.
+Long term memory can store selected useful information.
+Memory retrieval should return relevant information rather than everything that has ever been stored.
+
+Context management determines what information should be placed into the model input.
+A context window has a limited number of tokens.
+Important information should receive priority.
+Older or less relevant information may need to be summarized.
+
+Veyra should eventually support streaming responses.
+Streaming allows generated tokens to be sent to the user as they are produced.
+The API can expose the model through a standard interface.
+The website can use the same API.
+Other applications can also use the Veyra API.
+
+The Veyra developer platform will eventually provide documentation.
+Developers will be able to send requests to the API.
+Applications will be able to receive Veyra responses.
+The same brain should support the website and external applications.
+
+Security will be important for the API.
+API keys should never be exposed in client-side code.
+Requests should be validated.
+Errors should not reveal private configuration.
+Rate limits can protect infrastructure.
+
+The Veyra project should remain modular.
+The tokenizer should be independent from the transformer implementation.
+The transformer should be independent from the API.
+The training system should be independent from the website.
+The brain should coordinate the components without tightly coupling everything together.
+
+A modular architecture makes experimentation easier.
+A tokenizer can be improved without rewriting the API.
+A model configuration can change without rewriting the website.
+A new inference system can be added without replacing the training dataset.
+
+Veyra is being built incrementally.
+The first model is intentionally small.
+The first goal is not to compete with large commercial models.
+The first goal is to create a working independent foundation.
+Once the foundation works, the model can become larger.
+
+Model size affects computational requirements.
+More parameters can represent more learned information, but larger models require more memory and computation.
+Training data also affects model quality.
+Architecture, optimization, data quality and training duration all matter.
+
+The Veyra project will therefore measure progress instead of assuming that a larger model is automatically better.
+Training loss can be tracked.
+Validation loss can be tracked.
+Generation examples can be evaluated.
+Specific capabilities can be tested.
+
+The first Veyra model is an experiment.
+The experiment should be reproducible.
+Random seeds should be controlled where practical.
+Configuration should be stored.
+Checkpoints should be saved.
+Training logs should be recorded.
+
+Veyra begins with a simple idea.
+Text can be represented as tokens.
+Tokens can be processed by a neural network.
+The network can predict the next token.
+Repeated training can improve those predictions.
+That simple mechanism can become the foundation of a much larger language model.
+
+Veyra is software.
+Veyra learns from training data.
+Veyra predicts tokens.
+Veyra uses a transformer.
+Veyra has a tokenizer.
+Veyra has neural network weights.
+Veyra has a training system.
+Veyra will have an inference system.
+Veyra will eventually have a brain.
+
+The long term goal is an independent Veyra model.
+The model should have its own weights.
+The model should have its own tokenizer.
+The model should have its own training pipeline.
+The model should be served by Veyra infrastructure.
+The model should not depend on another company's language model to generate its core responses.
+
+This is the beginning of Veyra.

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0"
+  >
+  <title>Veyra — Chat</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+
+<body data-page="chat">
+
+<div class="app">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-mark">V</div>
+      <div class="brand-name">Veyra</div>
+      <div class="brand-version">0.2</div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Workspace</div>
+
+      <nav class="nav">
+        <a class="nav-link" data-page="chat" href="/chat">
+          <span class="nav-icon">⌁</span>
+          <span>Chat</span>
+        </a>
+
+        <a class="nav-link" data-page="api" href="/api">
+          <span class="nav-icon">⌘</span>
+          <span>API</span>
+        </a>
+
+        <a class="nav-link" data-page="usage" href="/usage">
+          <span class="nav-icon">◫</span>
+          <span>Usage</span>
+        </a>
+
+        <a class="nav-link" data-page="health" href="/health-page">
+          <span class="nav-icon">◉</span>
+          <span>API Health</span>
+        </a>
+
+        <a class="nav-link" data-page="models" href="/models">
+          <span class="nav-icon">◇</span>
+          <span>Models</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="status-mini">
+        <span class="status-dot"></span>
+        <span>Veyra API connected</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center">
+        <button class="mobile-toggle" aria-label="Open menu">☰</button>
+        <div class="page-title">Chat</div>
+        <div class="page-subtitle">Veyra AI Platform</div>
+      </div>
+
+      <div class="connection">
+        <span class="connection-dot"></span>
+        Connected
+      </div>
+    </header>
+
+    
+<section class="chat-page">
+
+  <div id="chatMessages" class="chat-messages">
+    <div class="chat-inner"></div>
+  </div>
+
+  <div class="chat-composer-wrap">
+    <div class="chat-composer">
+
+      <div class="chat-input-row">
+
+        <textarea
+          id="chatInput"
+          class="chat-input"
+          rows="1"
+          placeholder="Message Veyra..."
+          autocomplete="off"
+        ></textarea>
+
+        <button
+          id="sendButton"
+          class="send-btn"
+          disabled
+          aria-label="Send"
+        >
+          ↑
+        </button>
+
+      </div>
+
+      <div class="composer-meta">
+        <span>Enter to send · Shift + Enter for new line</span>
+        <span>veyra-dev</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+  </main>
+
+</div>
+
+<div class="toast-container"></div>
+
+<script src="/assets/app.js"></script>
+
+</body>
+</html>

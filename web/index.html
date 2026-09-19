@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veyra</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+  --bg:#fff;
+  --sidebar:#fafafa;
+  --panel:#fff;
+  --soft:#f6f6f6;
+  --border:#e7e7e7;
+  --border-strong:#d9d9d9;
+  --text:#1f1f1f;
+  --muted:#777;
+  --subtle:#999;
+  --green:#16803c;
+  --green-bg:#edf8f0;
+  --red:#c0392b;
+}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,
+    BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  font-size:14px;
+}
+
+button,input,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:224px;
+  flex:none;
+  min-height:100vh;
+  border-right:1px solid var(--border);
+  background:var(--sidebar);
+  padding:14px 10px;
+  display:flex;
+  flex-direction:column;
+}
+
+.brand{
+  height:38px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:0 9px;
+  margin-bottom:13px;
+  font-weight:650;
+  letter-spacing:-.15px;
+}
+
+.logo{
+  width:22px;
+  height:22px;
+  border-radius:6px;
+  background:#191919;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:750;
+}
+
+.nav-label{
+  color:#999;
+  font-size:10px;
+  font-weight:650;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  padding:10px 10px 6px;
+}
+
+.nav{
+  display:grid;
+  gap:1px;
+}
+
+.nav button{
+  border:0;
+  background:transparent;
+  width:100%;
+  height:34px;
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:0 10px;
+  color:#686868;
+  text-align:left;
+  font-size:13px;
+}
+
+.nav button:hover{
+  background:#f0f0f0;
+  color:#222;
+}
+
+.nav button.active{
+  background:#ededed;
+  color:#171717;
+  font-weight:600;
+}
+
+.nav-icon{
+  width:15px;
+  text-align:center;
+  color:#8a8a8a;
+  font-size:12px;
+}
+
+.sidebar-bottom{
+  margin-top:auto;
+  border-top:1px solid var(--border);
+  padding:12px 9px 4px;
+}
+
+.connection{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#777;
+  font-size:11px;
+}
+
+.connection-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#36a15b;
+}
+
+/* MAIN */
+
+.main{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  height:48px;
+  flex:none;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 23px;
+}
+
+.top-title{
+  font-size:13px;
+  font-weight:600;
+}
+
+.top-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.model{
+  color:#777;
+  font-size:11px;
+  border:1px solid var(--border);
+  border-radius:5px;
+  padding:4px 7px;
+  background:#fff;
+}
+
+.content{
+  width:100%;
+  max-width:1080px;
+  margin:0 auto;
+  padding:30px 34px 70px;
+}
+
+/* PAGES */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-head{
+  margin-bottom:25px;
+}
+
+.page-head h1{
+  font-size:21px;
+  line-height:1.25;
+  letter-spacing:-.45px;
+  margin:0 0 5px;
+  font-weight:650;
+}
+
+.page-head p{
+  color:var(--muted);
+  margin:0;
+  font-size:13px;
+}
+
+/* CHAT */
+
+.chat-page{
+  min-height:calc(100vh - 48px);
+  display:flex;
+  flex-direction:column;
+}
+
+.chat-page.active{
+  display:flex;
+}
+
+.chat-center{
+  width:min(700px,100%);
+  margin:auto;
+  padding:40px 0 90px;
+}
+
+.chat-heading{
+  margin-bottom:21px;
+}
+
+.chat-heading h1{
+  margin:0 0 7px;
+  font-size:27px;
+  letter-spacing:-.7px;
+  font-weight:620;
+}
+
+.chat-heading p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.composer{
+  border:1px solid var(--border-strong);
+  border-radius:11px;
+  background:#fff;
+  box-shadow:0 3px 12px rgba(0,0,0,.035);
+  overflow:hidden;
+}
+
+.composer textarea{
+  display:block;
+  width:100%;
+  min-height:105px;
+  resize:none;
+  border:0;
+  outline:0;
+  padding:14px 15px;
+  line-height:1.55;
+  color:var(--text);
+}
+
+.composer-bottom{
+  height:43px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:0 9px;
+}
+
+.send{
+  border:0;
+  background:#202020;
+  color:#fff;
+  border-radius:6px;
+  height:29px;
+  padding:0 12px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.send:hover{
+  background:#000;
+}
+
+.chat-response{
+  margin-top:25px;
+  white-space:pre-wrap;
+  line-height:1.65;
+  font-size:13px;
+}
+
+/* COMMON */
+
+.section{
+  border-top:1px solid var(--border);
+  margin-top:26px;
+  padding-top:19px;
+}
+
+.section-title{
+  font-size:12px;
+  font-weight:650;
+  margin-bottom:12px;
+}
+
+.table{
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+  background:#fff;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  background:#fafafa;
+  color:#858585;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  font-weight:600;
+}
+
+th,td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:12px;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.empty{
+  color:#999;
+  text-align:center;
+  padding:30px;
+}
+
+/* API */
+
+.api-form{
+  max-width:650px;
+}
+
+.input-row{
+  display:flex;
+  gap:7px;
+}
+
+.input{
+  min-width:0;
+  flex:1;
+  height:34px;
+  border:1px solid var(--border-strong);
+  border-radius:6px;
+  padding:0 10px;
+  outline:none;
+  background:#fff;
+  font-size:12px;
+}
+
+.input:focus{
+  border-color:#aaa;
+  box-shadow:0 0 0 2px #f1f1f1;
+}
+
+.button{
+  height:34px;
+  border:1px solid var(--border-strong);
+  background:#fff;
+  border-radius:6px;
+  padding:0 12px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.button:hover{
+  background:#f5f5f5;
+}
+
+.button-dark{
+  border-color:#202020;
+  background:#202020;
+  color:#fff;
+}
+
+.button-dark:hover{
+  background:#000;
+}
+
+.key-item{
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#fff;
+  margin-bottom:9px;
+}
+
+.key-top{
+  min-height:43px;
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+}
+
+.key-name{
+  font-weight:600;
+  font-size:12px;
+}
+
+.key-created{
+  color:#999;
+  font-size:10px;
+  margin-left:7px;
+}
+
+.key-main{
+  padding:12px;
+}
+
+.key-line{
+  display:flex;
+  gap:7px;
+  align-items:center;
+}
+
+.key-value{
+  flex:1;
+  min-width:0;
+  height:32px;
+  display:flex;
+  align-items:center;
+  padding:0 9px;
+  background:#fafafa;
+  border:1px solid var(--border);
+  border-radius:5px;
+  overflow:hidden;
+  white-space:nowrap;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  color:#666;
+}
+
+.key-value.revealed{
+  color:#222;
+}
+
+.small-button{
+  flex:none;
+  height:32px;
+  border:1px solid var(--border-strong);
+  border-radius:5px;
+  background:#fff;
+  padding:0 10px;
+  font-size:11px;
+  font-weight:600;
+}
+
+.small-button:hover{
+  background:#f5f5f5;
+}
+
+.key-example{
+  margin-top:11px;
+  padding:11px;
+  background:#1d1d1d;
+  border-radius:6px;
+  color:#ddd;
+  font:10.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;
+  overflow:auto;
+}
+
+/* STATUS */
+
+.status-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 0;
+}
+
+.status-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#2da052;
+}
+
+.status-text{
+  font-weight:600;
+  font-size:13px;
+}
+
+.status-detail{
+  color:#888;
+  font-size:11px;
+  margin-top:2px;
+}
+
+.inline-status{
+  margin-left:auto;
+  font-size:11px;
+  color:#218544;
+  background:var(--green-bg);
+  padding:4px 7px;
+  border-radius:4px;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.metric{
+  padding:15px;
+  border-right:1px solid var(--border);
+}
+
+.metric:last-child{
+  border-right:0;
+}
+
+.metric-label{
+  color:#888;
+  font-size:10px;
+  margin-bottom:7px;
+}
+
+.metric-value{
+  font-size:17px;
+  font-weight:650;
+}
+
+/* MODEL */
+
+.model-list{
+  border-top:1px solid var(--border);
+}
+
+.model-item{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+}
+
+.model-info{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.model-mark{
+  width:28px;
+  height:28px;
+  border:1px solid var(--border-strong);
+  border-radius:6px;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:700;
+}
+
+.model-title{
+  font-size:13px;
+  font-weight:600;
+}
+
+.model-id{
+  font-family:monospace;
+  font-size:10px;
+  color:#999;
+  margin-top:2px;
+}
+
+/* NOTIFICATIONS */
+
+#notifications{
+  position:fixed;
+  right:17px;
+  bottom:17px;
+  z-index:100;
+  width:min(340px,calc(100vw - 30px));
+  display:grid;
+  gap:7px;
+  pointer-events:none;
+}
+
+.notification{
+  pointer-events:auto;
+  display:flex;
+  gap:9px;
+  background:rgba(255,255,255,.98);
+  border:1px solid var(--border-strong);
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
+  padding:10px;
+  animation:notification-in .18s ease;
+}
+
+.notification.out{
+  animation:notification-out .16s ease forwards;
+}
+
+.notification-icon{
+  width:23px;
+  height:23px;
+  flex:none;
+  border-radius:5px;
+  background:#f1f1f1;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+  font-weight:700;
+}
+
+.notification-title{
+  font-size:11px;
+  font-weight:650;
+}
+
+.notification-message{
+  color:#777;
+  font-size:10px;
+  margin-top:2px;
+  line-height:1.35;
+}
+
+@keyframes notification-in{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:none}
+}
+
+@keyframes notification-out{
+  to{opacity:0;transform:translateY(4px)}
+}
+
+@media(max-width:720px){
+  .sidebar{
+    width:58px;
+    padding:12px 7px;
+  }
+
+  .brand span,
+  .nav-label,
+  .nav button span,
+  .connection span{
+    display:none;
+  }
+
+  .brand{
+    justify-content:center;
+    padding:0;
+  }
+
+  .nav button{
+    justify-content:center;
+    padding:0;
+  }
+
+  .content{
+    padding:22px 17px 60px;
+  }
+
+  .topbar{
+    padding:0 15px;
+  }
+
+  .metrics{
+    grid-template-columns:1fr;
+  }
+
+  .metric{
+    border-right:0;
+    border-bottom:1px solid var(--border);
+  }
+
+  .metric:last-child{
+    border-bottom:0;
+  }
+
+  .input-row{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="logo">V</div>
+      <span>Veyra</span>
+    </div>
+
+    <div class="nav-label">Workspace</div>
+
+    <nav class="nav">
+
+      <button class="active" data-page="chat">
+        <span class="nav-icon">◇</span>
+        <span>Chat</span>
+      </button>
+
+      <button data-page="api">
+        <span class="nav-icon">⌘</span>
+        <span>API</span>
+      </button>
+
+      <button data-page="usage">
+        <span class="nav-icon">▥</span>
+        <span>Usage</span>
+      </button>
+
+    </nav>
+
+    <div class="nav-label">Platform</div>
+
+    <nav class="nav">
+
+      <button data-page="health">
+        <span class="nav-icon">○</span>
+        <span>API Health</span>
+      </button>
+
+      <button data-page="models">
+        <span class="nav-icon">◆</span>
+        <span>Models</span>
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="connection">
+        <div class="connection-dot"></div>
+        <span>API connected</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div id="pageTitle" class="top-title">Chat</div>
+
+      <div class="top-right">
+        <div class="model">veyra-dev</div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- CHAT -->
+
+      <section id="page-chat" class="page chat-page active">
+
+        <div class="chat-center">
+
+          <div class="chat-heading">
+            <h1>How can Veyra help?</h1>
+            <p>
+              Talk to your Veyra model and brain.
+            </p>
+          </div>
+
+          <div class="composer">
+
+            <textarea
+              id="chatInput"
+              placeholder="Message Veyra..."
+            ></textarea>
+
+            <div class="composer-bottom">
+              <button
+                class="send"
+                id="sendChat"
+              >
+                Send
+              </button>
+            </div>
+
+          </div>
+
+          <div
+            id="chatResponse"
+            class="chat-response"
+          ></div>
+
+        </div>
+
+      </section>
+
+      <!-- API -->
+
+      <section id="page-api" class="page">
+
+        <div class="page-head">
+          <h1>API</h1>
+          <p>
+            Create keys to connect Veyra to your applications.
+          </p>
+        </div>
+
+        <div class="api-form">
+
+          <div class="section-title">
+            Create a new API key
+          </div>
+
+          <div class="input-row">
+
+            <input
+              id="apiName"
+              class="input"
+              placeholder="API key name"
+            >
+
+            <button
+              id="createKey"
+              class="button button-dark"
+            >
+              Create key
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="section">
+
+          <div class="section-title">
+            API keys
+          </div>
+
+          <div id="apiKeys"></div>
+
+        </div>
+
+      </section>
+
+      <!-- USAGE -->
+
+      <section id="page-usage" class="page">
+
+        <div class="page-head">
+          <h1>Usage</h1>
+          <p>
+            Requests made through the Veyra API.
+          </p>
+        </div>
+
+        <div class="metrics">
+
+          <div class="metric">
+            <div class="metric-label">
+              TOTAL REQUESTS
+            </div>
+            <div id="totalRequests" class="metric-value">
+              0
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="metric-label">
+              SUCCESSFUL
+            </div>
+            <div id="successfulRequests" class="metric-value">
+              0
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="metric-label">
+              ERRORS
+            </div>
+            <div id="failedRequests" class="metric-value">
+              0
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section">
+
+          <div class="section-title">
+            Recent requests
+          </div>
+
+          <div class="table">
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Endpoint</th>
+                  <th>Model</th>
+                  <th>Status</th>
+                  <th>Latency</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+
+              <tbody id="usageTable"></tbody>
+
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- HEALTH -->
+
+      <section id="page-health" class="page">
+
+        <div class="page-head">
+          <h1>API Health</h1>
+          <p>
+            Current status of the Veyra API.
+          </p>
+        </div>
+
+        <div id="healthContainer"></div>
+
+        <div class="section">
+
+          <div class="metrics">
+
+            <div class="metric">
+              <div class="metric-label">
+                SERVICE
+              </div>
+              <div id="healthService" class="metric-value">
+                —
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">
+                VERSION
+              </div>
+              <div id="healthVersion" class="metric-value">
+                —
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="metric-label">
+                UPTIME
+              </div>
+              <div id="healthUptime" class="metric-value">
+                —
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="section">
+
+          <div class="section-title">
+            Endpoints
+          </div>
+
+          <div class="table">
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Endpoint</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>POST</td>
+                  <td>/v1/chat/completions</td>
+                  <td class="muted">Generate a response</td>
+                </tr>
+
+                <tr>
+                  <td>GET</td>
+                  <td>/v1/models</td>
+                  <td class="muted">List models</td>
+                </tr>
+
+                <tr>
+                  <td>GET</td>
+                  <td>/v1/usage</td>
+                  <td class="muted">API usage</td>
+                </tr>
+
+                <tr>
+                  <td>GET</td>
+                  <td>/health</td>
+                  <td class="muted">Service health</td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- MODELS -->
+
+      <section id="page-models" class="page">
+
+        <div class="page-head">
+          <h1>Models</h1>
+          <p>
+            Models available through your Veyra API.
+          </p>
+        </div>
+
+        <div id="modelsContainer" class="model-list"></div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+<div id="notifications"></div>
+
+<script>
+const pageNames={
+  chat:"Chat",
+  api:"API",
+  usage:"Usage",
+  health:"API Health",
+  models:"Models"
+};
+
+const notifications=
+  document.getElementById("notifications");
+
+function escapeHtml(value){
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function notify(title,message,type="info"){
+  const el=document.createElement("div");
+
+  const icons={
+    success:"✓",
+    error:"!",
+    warning:"!",
+    info:"i"
+  };
+
+  el.className="notification";
+
+  el.innerHTML=`
+    <div class="notification-icon">
+      ${icons[type]||"i"}
+    </div>
+    <div>
+      <div class="notification-title">
+        ${escapeHtml(title)}
+      </div>
+      <div class="notification-message">
+        ${escapeHtml(message)}
+      </div>
+    </div>
+  `;
+
+  notifications.appendChild(el);
+
+  setTimeout(()=>{
+    el.classList.add("out");
+
+    setTimeout(()=>{
+      el.remove();
+    },170);
+  },3200);
+}
+
+async function api(path,options={}){
+  const response=await fetch(path,options);
+  const data=await response.json();
+
+  if(!response.ok){
+    throw new Error(
+      data?.error?.message||
+      data?.error||
+      "Request failed"
+    );
+  }
+
+  return data;
+}
+
+function showPage(page){
+
+  document.querySelectorAll(".page")
+    .forEach(x=>x.classList.remove("active"));
+
+  document.querySelectorAll(".nav button")
+    .forEach(x=>x.classList.remove("active"));
+
+  document
+    .getElementById(`page-${page}`)
+    .classList.add("active");
+
+  document
+    .querySelector(`[data-page="${page}"]`)
+    .classList.add("active");
+
+  document.getElementById("pageTitle")
+    .textContent=pageNames[page];
+
+  if(page==="api") loadKeys();
+  if(page==="usage") loadUsage();
+  if(page==="health") loadHealth();
+  if(page==="models") loadModels();
+}
+
+document.querySelectorAll(".nav button")
+  .forEach(button=>{
+    button.addEventListener("click",()=>{
+      showPage(button.dataset.page);
+    });
+  });
+
+/* CHAT */
+
+async function sendChat(){
+
+  const input=
+    document.getElementById("chatInput");
+
+  const output=
+    document.getElementById("chatResponse");
+
+  const message=input.value.trim();
+
+  if(!message){
+    notify(
+      "Message required",
+      "Enter something for Veyra to respond to.",
+      "warning"
+    );
+    return;
+  }
+
+  output.textContent="Veyra is thinking…";
+
+  try{
+
+    const result=await api(
+      "/v1/chat/completions",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          model:"veyra-dev",
+          messages:[
+            {
+              role:"user",
+              content:message
+            }
+          ]
+        })
+      }
+    );
+
+    output.textContent=
+      result.choices?.[0]?.message?.content||
+      "No response returned.";
+
+  }catch(error){
+
+    output.textContent="";
+
+    notify(
+      "Request failed",
+      error.message,
+      "error"
+    );
+  }
+}
+
+document
+  .getElementById("sendChat")
+  .addEventListener("click",sendChat);
+
+document
+  .getElementById("chatInput")
+  .addEventListener("keydown",event=>{
+    if(event.key==="Enter"&&!event.shiftKey){
+      event.preventDefault();
+      sendChat();
+    }
+  });
+
+/* API KEYS */
+
+async function createKey(){
+
+  const input=
+    document.getElementById("apiName");
+
+  const name=input.value.trim();
+
+  if(!name){
+    notify(
+      "Name required",
+      "Give the API key a name first.",
+      "warning"
+    );
+    return;
+  }
+
+  try{
+
+    await api(
+      "/v1/api-keys",
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({name})
+      }
+    );
+
+    input.value="";
+
+    await loadKeys();
+
+    notify(
+      "API key created",
+      "Your new Veyra key is ready.",
+      "success"
+    );
+
+  }catch(error){
+
+    notify(
+      "Could not create key",
+      error.message,
+      "error"
+    );
+  }
+}
+
+document
+  .getElementById("createKey")
+  .addEventListener("click",createKey);
+
+async function loadKeys(){
+
+  const container=
+    document.getElementById("apiKeys");
+
+  try{
+
+    const result=
+      await api("/v1/api-keys");
+
+    if(!result.data.length){
+
+      container.innerHTML=`
+        <div class="empty">
+          No API keys yet.
+        </div>
+      `;
+
+      return;
+    }
+
+    container.innerHTML=result.data.map(key=>`
+
+      <div class="key-item">
+
+        <div class="key-top">
+
+          <div>
+            <span class="key-name">
+              ${escapeHtml(key.name)}
+            </span>
+
+            <span class="key-created">
+              created ${new Date(key.createdAt)
+                .toLocaleDateString()}
+            </span>
+          </div>
+
+          <button
+            class="small-button"
+            onclick="revokeKey('${key.id}')"
+          >
+            Revoke
+          </button>
+
+        </div>
+
+        <div class="key-main">
+
+          <div class="key-line">
+
+            <div
+              class="key-value"
+              id="key-${key.id}"
+              data-key="${escapeHtml(key.key)}"
+            >
+              ${maskKey(key.key)}
+            </div>
+
+            <button
+              class="small-button"
+              onclick="toggleKey('${key.id}')"
+            >
+              Show key
+            </button>
+
+            <button
+              class="small-button"
+              onclick="copyKey('${key.id}')"
+            >
+              Copy
+            </button>
+
+          </div>
+
+          <div class="key-example">
+curl https://YOUR-VEYRA-HOST/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer ${escapeHtml(key.key)}" \\
+  -d '{
+    "model": "veyra-dev",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello Veyra"
+      }
+    ]
+  }'
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+  }catch(error){
+
+    notify(
+      "Could not load API keys",
+      error.message,
+      "error"
+    );
+  }
+}
+
+function maskKey(key){
+  return key.slice(0,6)+"••••••••••••••••••••••••"+key.slice(-4);
+}
+
+function toggleKey(id){
+
+  const el=
+    document.getElementById(`key-${id}`);
+
+  const button=
+    el.parentElement
+      .querySelectorAll(".small-button")[0];
+
+  const isShown=
+    el.classList.contains("revealed");
+
+  if(isShown){
+
+    el.textContent=maskKey(el.dataset.key);
+    el.classList.remove("revealed");
+
+    button.textContent="Show key";
+
+  }else{
+
+    el.textContent=el.dataset.key;
+    el.classList.add("revealed");
+
+    button.textContent="Hide key";
+  }
+}
+
+async function copyKey(id){
+
+  const el=
+    document.getElementById(`key-${id}`);
+
+  try{
+
+    await navigator.clipboard
+      .writeText(el.dataset.key);
+
+    notify(
+      "Copied",
+      "The API key was copied to your clipboard.",
+      "success"
+    );
+
+  }catch{
+
+    notify(
+      "Copy failed",
+      "Clipboard access was blocked.",
+      "error"
+    );
+  }
+}
+
+async function revokeKey(id){
+
+  try{
+
+    await api(
+      `/v1/api-keys/${id}`,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadKeys();
+
+    notify(
+      "Key revoked",
+      "The API key is no longer active.",
+      "success"
+    );
+
+  }catch(error){
+
+    notify(
+      "Could not revoke key",
+      error.message,
+      "error"
+    );
+  }
+}
+
+/* USAGE */
+
+async function loadUsage(){
+
+  try{
+
+    const data=
+      await api("/v1/usage");
+
+    document.getElementById("totalRequests")
+      .textContent=data.totalRequests;
+
+    document.getElementById("successfulRequests")
+      .textContent=data.successfulRequests;
+
+    document.getElementById("failedRequests")
+      .textContent=data.failedRequests;
+
+    const table=
+      document.getElementById("usageTable");
+
+    if(!data.requests.length){
+
+      table.innerHTML=`
+        <tr>
+          <td colspan="5" class="empty">
+            No requests yet.
+          </td>
+        </tr>
+      `;
+
+      return;
+    }
+
+    table.innerHTML=data.requests.map(request=>`
+
+      <tr>
+
+        <td>
+          ${escapeHtml(request.endpoint)}
+        </td>
+
+        <td>
+          ${escapeHtml(request.model||"—")}
+        </td>
+
+        <td>
+          ${request.status==="success"
+            ?"Success"
+            :"Error"}
+        </td>
+
+        <td>
+          ${request.duration}ms
+        </td>
+
+        <td>
+          ${new Date(request.timestamp)
+            .toLocaleString()}
+        </td>
+
+      </tr>
+
+    `).join("");
+
+  }catch(error){
+
+    notify(
+      "Usage unavailable",
+      error.message,
+      "error"
+    );
+  }
+}
+
+/* HEALTH */
+
+async function loadHealth(){
+
+  const container=
+    document.getElementById("healthContainer");
+
+  try{
+
+    const health=
+      await api("/health");
+
+    container.innerHTML=`
+
+      <div class="status-row">
+
+        <div class="status-dot"></div>
+
+        <div>
+          <div class="status-text">
+            Veyra API is operational
+          </div>
+
+          <div class="status-detail">
+            ${escapeHtml(health.service)}
+          </div>
+        </div>
+
+        <div class="inline-status">
+          ${escapeHtml(health.status)}
+        </div>
+
+      </div>
+
+    `;
+
+    document.getElementById("healthService")
+      .textContent=health.service;
+
+    document.getElementById("healthVersion")
+      .textContent=health.version;
+
+    document.getElementById("healthUptime")
+      .textContent=formatUptime(health.uptime);
+
+  }catch(error){
+
+    container.innerHTML=`
+      <div class="status-row">
+        <div class="status-dot"
+          style="background:#c0392b"></div>
+        <div>
+          <div class="status-text">
+            Veyra API is unavailable
+          </div>
+          <div class="status-detail">
+            ${escapeHtml(error.message)}
+          </div>
+        </div>
+      </div>
+    `;
+
+  }
+}
+
+function formatUptime(seconds){
+
+  if(seconds<60) return `${seconds}s`;
+  if(seconds<3600) return `${Math.floor(seconds/60)}m`;
+
+  return `${Math.floor(seconds/3600)}h`;
+}
+
+/* MODELS */
+
+async function loadModels(){
+
+  const container=
+    document.getElementById("modelsContainer");
+
+  try{
+
+    const result=
+      await api("/v1/models");
+
+    container.innerHTML=result.data.map(model=>`
+
+      <div class="model-item">
+
+        <div class="model-info">
+
+          <div class="model-mark">
+            V
+          </div>
+
+          <div>
+
+            <div class="model-title">
+              ${escapeHtml(model.id)}
+            </div>
+
+            <div class="model-id">
+              ${escapeHtml(model.type||"model")}
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="inline-status">
+          ${escapeHtml(model.status)}
+        </div>
+
+      </div>
+
+    `).join("");
+
+  }catch(error){
+
+    notify(
+      "Models unavailable",
+      error.message,
+      "error"
+    );
+  }
+}
+
+showPage("chat");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+node_modules/
+.env
+*.log
+.DS_Store
+coverage/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Model checkpoints
+model/checkpoints/*.pt
+
+# Temporary files
+*.tmp

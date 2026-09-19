@@ -1,0 +1,189 @@
+{
+  "apiKeys": [
+    {
+      "id": "key_00fe45c603189920",
+      "name": "Untitled API",
+      "key": "veyra_5fa7c89fd6f4dfdd988def9c6df3b02eecfc92bf10844a55",
+      "active": false,
+      "createdAt": "2026-09-19T14:31:09.926Z",
+      "lastUsedAt": null
+    },
+    {
+      "id": "key_0c70913f0deebbb2",
+      "name": "bobby",
+      "key": "veyra_7c74898f553b90a3500e60133ae69004a6f3be5c84a453ad",
+      "active": false,
+      "createdAt": "2026-09-19T13:49:36.559Z",
+      "lastUsedAt": null
+    }
+  ],
+  "usage": {
+    "totalRequests": 18,
+    "successfulRequests": 13,
+    "failedRequests": 5,
+    "requests": [
+      {
+        "id": "req_b60064cea90666a69e20",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1100,
+        "error": null,
+        "timestamp": "2026-09-19T15:01:01.377Z"
+      },
+      {
+        "id": "req_01269d3a323bafc21698",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 969,
+        "error": null,
+        "timestamp": "2026-09-19T15:00:42.507Z"
+      },
+      {
+        "id": "req_754838272d6b76b72a77",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1181,
+        "error": null,
+        "timestamp": "2026-09-19T14:23:15.348Z"
+      },
+      {
+        "id": "req_ccba26e1966066bb1998",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1084,
+        "error": null,
+        "timestamp": "2026-09-19T14:22:48.605Z"
+      },
+      {
+        "id": "req_2cd794934e14b67354ef",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1085,
+        "error": null,
+        "timestamp": "2026-09-19T14:22:39.603Z"
+      },
+      {
+        "id": "req_1fb6cf27116b370d6904",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1394,
+        "error": null,
+        "timestamp": "2026-09-19T14:21:43.490Z"
+      },
+      {
+        "id": "req_dad841b7357bcf5e5c85",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "error",
+        "duration": 5,
+        "error": "fetch failed",
+        "timestamp": "2026-09-19T14:15:40.578Z"
+      },
+      {
+        "id": "req_74a64e70fc731f27d217",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "error",
+        "duration": 14,
+        "error": "fetch failed",
+        "timestamp": "2026-09-19T14:15:16.477Z"
+      },
+      {
+        "id": "req_080b903f1e01817426af",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "error",
+        "duration": 2,
+        "error": "fetch failed",
+        "timestamp": "2026-09-19T14:06:40.235Z"
+      },
+      {
+        "id": "req_7991f0b1f5012528ac91",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "error",
+        "duration": 17,
+        "error": "fetch failed",
+        "timestamp": "2026-09-19T14:06:20.614Z"
+      },
+      {
+        "id": "req_9538acb689f2e52a13a6",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1,
+        "error": null,
+        "timestamp": "2026-09-19T14:03:57.396Z"
+      },
+      {
+        "id": "req_158a54e764a147674160",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "error",
+        "duration": 23,
+        "error": "fetch failed",
+        "timestamp": "2026-09-19T14:03:45.745Z"
+      },
+      {
+        "id": "req_dde06c79c9fd6f4fe5fb",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1,
+        "error": null,
+        "timestamp": "2026-09-19T14:01:05.882Z"
+      },
+      {
+        "id": "req_1863dfee377973b73fbd",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1,
+        "error": null,
+        "timestamp": "2026-09-19T14:01:01.211Z"
+      },
+      {
+        "id": "req_fbd97d595866572e8da2",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1,
+        "error": null,
+        "timestamp": "2026-09-19T14:00:20.479Z"
+      },
+      {
+        "id": "req_99c36417dc2b57a151ef",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 2,
+        "error": null,
+        "timestamp": "2026-09-19T13:59:59.385Z"
+      },
+      {
+        "id": "req_f2c6df080f06ac39a642",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1,
+        "error": null,
+        "timestamp": "2026-09-19T13:55:15.830Z"
+      },
+      {
+        "id": "req_31671f500507aa2da082",
+        "endpoint": "/v1/chat/completions",
+        "model": "veyra-dev",
+        "status": "success",
+        "duration": 1,
+        "error": null,
+        "timestamp": "2026-09-19T13:55:10.430Z"
+      }
+    ]
+  }
+}

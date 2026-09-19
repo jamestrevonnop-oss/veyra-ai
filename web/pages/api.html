@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0"
+  >
+  <title>Veyra — API</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+
+<body data-page="api">
+
+<div class="app">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-mark">V</div>
+      <div class="brand-name">Veyra</div>
+      <div class="brand-version">0.2</div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Workspace</div>
+
+      <nav class="nav">
+        <a class="nav-link" data-page="chat" href="/chat">
+          <span class="nav-icon">⌁</span>
+          <span>Chat</span>
+        </a>
+
+        <a class="nav-link" data-page="api" href="/api">
+          <span class="nav-icon">⌘</span>
+          <span>API</span>
+        </a>
+
+        <a class="nav-link" data-page="usage" href="/usage">
+          <span class="nav-icon">◫</span>
+          <span>Usage</span>
+        </a>
+
+        <a class="nav-link" data-page="health" href="/health-page">
+          <span class="nav-icon">◉</span>
+          <span>API Health</span>
+        </a>
+
+        <a class="nav-link" data-page="models" href="/models">
+          <span class="nav-icon">◇</span>
+          <span>Models</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="status-mini">
+        <span class="status-dot"></span>
+        <span>Veyra API connected</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center">
+        <button class="mobile-toggle" aria-label="Open menu">☰</button>
+        <div class="page-title">API</div>
+        <div class="page-subtitle">Veyra AI Platform</div>
+      </div>
+
+      <div class="connection">
+        <span class="connection-dot"></span>
+        Connected
+      </div>
+    </header>
+
+    
+<div class="content narrow">
+
+  <div class="hero">
+    <h1>API</h1>
+    <p>
+      Manage API keys and connect external applications to the Veyra platform.
+    </p>
+  </div>
+
+  <div id="apiKeysContent"></div>
+
+  <div class="card" style="margin-top:14px">
+
+    <div class="card-header">
+      <div class="card-title">Quick start</div>
+      <div class="card-description">
+        Send your first request from an external application.
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="code">curl -X POST http://localhost:3000/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer YOUR_VEYRA_API_KEY" \\
+  -d '{
+    "model": "veyra-dev",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello Veyra"
+      }
+    ]
+  }'</div>
+    </div>
+
+  </div>
+
+</div>
+
+
+  </main>
+
+</div>
+
+<div class="toast-container"></div>
+
+<script src="/assets/app.js"></script>
+
+</body>
+</html>
