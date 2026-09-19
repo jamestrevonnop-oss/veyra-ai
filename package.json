@@ -5,11 +5,24 @@
   "description": "Veyra AI platform and developer API",
   "type": "module",
   "scripts": {
-    "start": "node api/server.js",
-    "dev": "node --watch api/server.js",
-    "test": "node --test"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "api": "node api/server.js",
+    "api:dev": "node --watch api/server.js",
+    "test": "node --test",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
-  }
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "dotenv": "^16.4.7",
+    "lucide-react": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {}
 }
