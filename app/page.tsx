@@ -230,12 +230,21 @@ export default function Home() {
         </div>
       </aside>
 
+      {sidebarOpen && (
+        <button
+          className="sidebar-overlay"
+          aria-label="Close sidebar"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       <section className="content">
         <header className="topbar">
           <button
             className="icon-button mobile-menu"
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            aria-label="Toggle sidebar"
+            aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+            aria-expanded={sidebarOpen}
           >
             <Menu size={18} />
           </button>
@@ -272,7 +281,8 @@ export default function Home() {
             <button
               className="icon-button"
               onClick={() => setDark(!dark)}
-              aria-label="Toggle theme"
+              aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+              aria-pressed={dark}
             >
               {dark ? <Sun size={17} /> : <Moon size={17} />}
             </button>
